@@ -1,15 +1,17 @@
 // Assignment code here
 
 // various arrays
-var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-var number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+var number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-var special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '>', '=', '?', '@', '[', ']', '^', '_', '`', '{', '}', '|', '~']
+var special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '>', '=', '?', '@', '[', ']', '^', '_', '`', '{', '}', '|', '~'];
 
-//prompt password length and make sure they enter a valid answer
+var arraySelector = [lowercase, uppercase, number, special];
+
+//prompt password length and verification
 var length = function() {    
     //character number
     var promptLength = window.prompt('How many characters do you want in your password? Your password may be between 8 and 128 characters.');
@@ -33,8 +35,8 @@ length();
 
 
 //character type questions
-var charLowercase = function() {    
-    var lowercaseSelector = window.confirm('Do you want lowercase letters?');
+/*var charLowercase = function() {    
+    
     if(lowercaseSelector) {
         var lowercaseRandom = lowercase[Math.floor(Math.random()*lowercase.length)];
         console.log(lowercaseRandom);
@@ -42,10 +44,9 @@ var charLowercase = function() {
     }
     return false;
 }
-charLowercase();
 
 var charUppercase = function() { 
-    var uppercaseSelectior = window.confirm('Do you want uppercase letters?');
+    
     if(uppercaseSelection) {
         var uppercaseRandom = uppercase[Math.floor(Math.random()*uppercase.length)];
         console.log(uppercaseRandom);
@@ -53,10 +54,9 @@ var charUppercase = function() {
     }
     return false;
 }
-charUppercase();
 
 var charNum = function() {
-    var numberSelector = window.confirm('Do you want numbers?');
+    
     if(numberSelector) {
         var numberRandom = number[Math.floor(Math.random()*number.length)];
         console.log(numberRandom);
@@ -64,19 +64,46 @@ var charNum = function() {
     }
     return false;
 }
-charNum();
 
 var charSpecial = function() {
-    var specialSelector = window.confirm('Do you want special characters?');
+    
     if(specialSelector) {
         var specialRandom = special[Math.floor(Math.random()*special.length)];
         console.log(specialRandom);
         return true;
     }
     return false;
-}
-charSpecial();
+}*/
 
+var writePassword = function() {
+    //prompt which characters you want
+    var lowercaseSelector = window.confirm('Do you want Lowercase letters?');
+    var uppercaseSelectior = window.confirm('Do you want Uppercase letters?');
+    var numberSelector = window.confirm('Do you want Numbers?');
+    var specialSelector = window.confirm('Do you want Special characters?');
+
+    //check for a return true in at least one character
+    if(lowercaseSelector || uppercaseSelectior || numberSelector || specialSelector) {
+       return true; 
+    }
+    else {
+        window.alert('You must chose "Ok" to at least one of the following choices: "Lowercase letters, Uppercase letters, Numbers, or Special characters.')
+        return writePassword();
+    }
+
+    for (i = 1; i < promptLength; i++) {
+        
+    }
+}
+writePassword();
+
+
+//make sure at least 1 character is chosen
+    //if not chosen return them to the begining of the function
+
+//be able to randomly select which array 
+//be able to randomly select from arrays
+//loop as many times as needed
 
 
 
