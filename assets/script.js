@@ -31,6 +31,7 @@ length();
 //prompt what type of characters they want in their password & make sure at least 1 type is selected
 
 
+
 //character type questions
 var charLowercase = function() {    
     var lowercaseSelector = window.confirm('Do you want lowercase letters?');
