@@ -49,9 +49,9 @@ var selectCharacters = function() {
 }
 selectCharacters();
 
-
+//create password array with character population
 var createPopulation = function() {
-    var characterPopulation = [];
+    characterPopulation = [];
     
     if (lowercaseSelector) {
         characterPopulation += lowercase;
@@ -72,6 +72,7 @@ var createPopulation = function() {
     return characterPopulation;
 }
 
+// ensure at least 1 character from each chosen set is in the password
 var atLeastOneCharacter = function() {
     password = '';
 
@@ -100,9 +101,8 @@ var atLeastOneCharacter = function() {
 var selectRandomChar = function() {
 
     for (i = 0; i < promptLength; i++) {
-        
+       password += characterPopulation[Math.floor(Math.random() * characterPopulation.length)]; 
     }
-    
 }
 createPassword();
 
