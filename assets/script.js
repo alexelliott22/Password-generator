@@ -1,7 +1,9 @@
 // Assignment code here
 
 // various arrays
-/*var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
@@ -9,7 +11,7 @@ var number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 var special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '>', '=', '?', '@', '[', ']', '^', '_', '`', '{', '}', '|', '~'];
 
-var arraySelector = [lowercase, uppercase, number, special];*/
+
 
 //prompt password length and verification
 var length = function() {    
@@ -26,23 +28,15 @@ var length = function() {
     }
 }
 length();
-
-
-
-
-        //select random index from array
-        var lowercaseRandom = lowercase[Math.floor(Math.random()*lowercase.length)];
-        var uppercaseRandom = uppercase[Math.floor(Math.random()*uppercase.length)];
-        var numberRandom = number[Math.floor(Math.random()*number.length)];
-        var specialRandom = special[Math.floor(Math.random()*special.length)];
+        
 
 
 var selectCharacters = function() {
     //prompt which characters you want
-    var lowercaseSelector = window.confirm('Do you want Lowercase letters?');
-    var uppercaseSelectior = window.confirm('Do you want Uppercase letters?');
-    var numberSelector = window.confirm('Do you want Numbers?');
-    var specialSelector = window.confirm('Do you want Special characters?');
+    lowercaseSelector = window.confirm('Do you want Lowercase letters?');
+    uppercaseSelectior = window.confirm('Do you want Uppercase letters?');
+    numberSelector = window.confirm('Do you want Numbers?');
+    specialSelector = window.confirm('Do you want Special characters?');
 
     //check that at least 1 character is chosen or return an error
     if(lowercaseSelector || uppercaseSelectior || numberSelector || specialSelector) {
@@ -50,21 +44,70 @@ var selectCharacters = function() {
     }
     else {
         window.alert('ERROR: You must chose "Ok" to at least one of the following choices: "Lowercase letters, Uppercase letters, Numbers, or Special characters.')
-        return writePassword();
+        return selectCharacters();
     }
 }
 selectCharacters();
 
-var writePassword = function() {
+
+var createPopulation = function() {
+    var characterPopulation = [];
     
+    if (lowercaseSelector) {
+        characterPopulation += lowercase;
+    }
+
+    if (uppercaseSelectior) {
+        characterPopulation += uppercase;
+    }
+
+    if (numberSelector) {
+        characterPopulation += number;
+    }
+
+    if (specialSelector) {
+        characterPopulation += special;
+    }
+
+    return characterPopulation;
+}
+
+var atLeastOneCharacter = function() {
+    password = '';
+
+    //guarentees at least one charcater is chosen
+    if (lowercaseSelector) {
+        password += lowercase[Math.floor(Math.random() * lowercase.length)];
+    }
+
+    if (uppercaseSelectior) {
+        password += uppercase[Math.floor(Math.random() * uppercase.length)];
+    }
+
+    if (numberSelector) {
+        password += number[Math.floor(Math.random() * number.length)];
+    }
+
+    if (specialSelector) {
+        password += special[Math.floor(Math.random() + special.length)];
+    }
+
+    return password;
+}
+
+
+// select random characters from password
+var selectRandomChar = function() {
+
     for (i = 0; i < promptLength; i++) {
         
     }
+    
 }
-writePassword();
+createPassword();
 
-//be able to randomly select which array 
-//be able to randomly select from arrays
+
+
 
 
 // Get references to the #generate element
