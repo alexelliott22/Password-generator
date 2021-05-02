@@ -16,11 +16,11 @@ var special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', 
 //prompt password length and verification
 var length = function() {    
     //character number
-    promptLength = window.prompt('How many characters do you want in your password? Your password may be between 8 and 128 characters.');
+    passwordLength = window.prompt('How many characters do you want in your password? Your password may be between 8 and 128 characters.');
 
     //validate prompt
-    if(promptLength > 7 && promptLength < 129) {
-        console.log(promptLength);
+    if(passwordLength > 7 && passwordLength < 129) {
+        console.log(passwordLength);
     }
     else {
         window.alert('You need to provid a valid answer!');
@@ -29,8 +29,7 @@ var length = function() {
 }
 length();
         
-
-
+//prompts to select characters for password
 var selectCharacters = function() {
     //prompt which characters you want
     lowercaseSelector = window.confirm('Do you want Lowercase letters?');
@@ -54,60 +53,81 @@ var createPopulation = function() {
     characterPopulation = [];
     
     if (lowercaseSelector) {
-        characterPopulation += lowercase;
+        //characterPopulation += lowercase;
+        characterPopulation += characterPopulation.concat(lowercase);
     }
 
     if (uppercaseSelectior) {
-        characterPopulation += uppercase;
+        // characterPopulation += uppercase;
+        characterPopulation += characterPopulation.concat(uppercase);
     }
 
     if (numberSelector) {
-        characterPopulation += number;
+        // characterPopulation += number;
+        createPopulation += characterPopulation.concat(number);
     }
 
     if (specialSelector) {
-        characterPopulation += special;
+        // characterPopulation += special;
+        characterPopulation += characterPopulation.concat(special);
     }
 
     return characterPopulation;
 }
+createPopulation();
+console.log(characterPopulation);
+debugger;
 
 // ensure at least 1 character from each chosen set is in the password
 var atLeastOneCharacter = function() {
-    password = '';
+    passphrase = '';
+    charCount = 0;
 
     //guarentees at least one charcater is chosen
     if (lowercaseSelector) {
-        password += lowercase[Math.floor(Math.random() * lowercase.length)];
+        passphrase += lowercase[Math.floor(Math.random() * lowercase.length)];
+        charCount += 1;
     }
 
     if (uppercaseSelectior) {
-        password += uppercase[Math.floor(Math.random() * uppercase.length)];
+        passphrase += uppercase[Math.floor(Math.random() * uppercase.length)];
+        charCount += 1;
     }
 
     if (numberSelector) {
-        password += number[Math.floor(Math.random() * number.length)];
+        passphrase += number[Math.floor(Math.random() * number.length)];
+        charCount += 1;
     }
 
     if (specialSelector) {
-        password += special[Math.floor(Math.random() + special.length)];
+        passphrase += special[Math.floor(Math.random() * special.length)];
+        charCount += 1;
     }
 
-    return password;
+    return passphrase;
 }
-
+atLeastOneCharacter();
 
 // select random characters from password
 var selectRandomChar = function() {
-
-    for (i = 0; i < promptLength; i++) {
-       password += characterPopulation[Math.floor(Math.random() * characterPopulation.length)]; 
-    }
+    return characterPopulation[Math.floor(Math.random() * characterPopulation.length)];
+    
 }
-createPassword();
+selectRandomChar();
 
+//generate password
+var generatePassword = function() {
+    passphrase = '';
 
+    passphrase += atLeastOneCharacter();
 
+    for (i = 0; i < passwordLength - charCount; i++) {
+        passphrase += selectRandomChar(); 
+     }
+
+     return passphrase;
+}
+generatePassword();
 
 
 // Get references to the #generate element
