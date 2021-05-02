@@ -1,8 +1,6 @@
 // Assignment code here
 
-// various arrays
-
-
+// various character categories
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 
 var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -10,8 +8,6 @@ var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var number = '1234567890';
 
 var special = ' !#$%&()*+,-./:;<=>?@[\]^_`{|}~' + '"' + "'";
-
-
 
 //prompt password length and verification
 var length = function() {    
