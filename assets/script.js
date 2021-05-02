@@ -3,13 +3,13 @@
 // various arrays
 
 
-var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 
-var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-var number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var number = '1234567890';
 
-var special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '>', '=', '?', '@', '[', ']', '^', '_', '`', '{', '}', '|', '~'];
+var special = ' !#$%&()*+,-./:;<=>?@[\]^_`{|}~' + '"' + "'";
 
 
 
@@ -54,29 +54,28 @@ var createPopulation = function() {
     
     if (lowercaseSelector) {
         //characterPopulation += lowercase;
-        characterPopulation += characterPopulation.concat(lowercase);
+        characterPopulation += lowercase;
     }
 
     if (uppercaseSelectior) {
         // characterPopulation += uppercase;
-        characterPopulation += characterPopulation.concat(uppercase);
+        characterPopulation += uppercase;
     }
 
     if (numberSelector) {
         // characterPopulation += number;
-        createPopulation += characterPopulation.concat(number);
+        characterPopulation += number;
     }
 
     if (specialSelector) {
         // characterPopulation += special;
-        characterPopulation += characterPopulation.concat(special);
+        characterPopulation += special;
     }
 
     return characterPopulation;
 }
 createPopulation();
 console.log(characterPopulation);
-debugger;
 
 // ensure at least 1 character from each chosen set is in the password
 var atLeastOneCharacter = function() {
@@ -85,22 +84,22 @@ var atLeastOneCharacter = function() {
 
     //guarentees at least one charcater is chosen
     if (lowercaseSelector) {
-        passphrase += lowercase[Math.floor(Math.random() * lowercase.length)];
+        passphrase += lowercase.charAt(Math.floor(Math.random() * lowercase.length));
         charCount += 1;
     }
 
     if (uppercaseSelectior) {
-        passphrase += uppercase[Math.floor(Math.random() * uppercase.length)];
+        passphrase += uppercase.charAt(Math.floor(Math.random() * uppercase.length));
         charCount += 1;
     }
 
     if (numberSelector) {
-        passphrase += number[Math.floor(Math.random() * number.length)];
+        passphrase += number.charAt(Math.floor(Math.random() * number.length));
         charCount += 1;
     }
 
     if (specialSelector) {
-        passphrase += special[Math.floor(Math.random() * special.length)];
+        passphrase += special.charAt(Math.floor(Math.random() * special.length));
         charCount += 1;
     }
 
